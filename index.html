@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Casa do Construtor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+
+        body,
+        html {
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100px;
+            width: 100%;
+            background-color: #004d8e;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+        }
+
+        .logo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-lateral,
+        .logo-centro {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-centro {
+            flex: 1;
+        }
+
+        .logo-lateral {
+            width: 100px;
+            /* ou o tamanho que quiser limitar para os lados */
+        }
+
+
+        .logo-box {
+            width: auto;
+            height: 100%;
+            max-height: 100%;
+        }
+
+        .title {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .primeira-imagem {
+            margin-top: 100px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .primeira-imagem img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .contact-info {
+            font-size: 0.9rem;
+            text-align: right;
+            color: #fff;
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        .contact-container {
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+        }
+
+        .contact-info {
+            font-size: 0.9rem;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            align-items: flex-end;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-localizacao {
+            font-size: 0.85rem;
+            padding: 8px 12px;
+            background-color: #ffc72c;
+            color: #004d8e;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-localizacao:hover {
+            background-color: #e6b523;
+        }
+
+        .capta-zap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #8c8c8c;
+            padding: 0px 20px;
+            flex-wrap: wrap;
+            gap: 40px;
+            border: 15px solid #ffc72c;
+        }
+
+        .container-capta-zap {
+            display: flex;
+            flex-direction: column;
+            color: #fff;
+            max-width: 100%;
+            gap: 20px;
+            padding: 1px;
+        }
+
+        .container-capta-zap .logo img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .frase-impacto h2 {
+            font-size: 2rem;
+            line-height: 1.4;
+            font-weight: bold;
+            color: #ffc72c;
+            /* amarelo ouro */
+        }
+
+        .descricao-impacto h2 {
+            font-size: 1rem;
+            line-height: 1.4;
+            font-weight: 400;
+        }
+
+        .onde-estamos {
+            padding: 1rem;
+        }
+
+        .onde-estamos h2 {
+            justify-content: center;
+            display: flex;
+        }
+
+        .onde-estamos h2 {
+            font-size: 2rem;
+            line-height: 1.4;
+            font-weight: bold;
+            color: #004d8e;
+            /* amarelo ouro */
+        }
+
+        .municipio h2 {
+            font-size: 1.5rem;
+            line-height: 1.4;
+        }
+
+        .endereco h2 {
+            font-size: 1.5rem;
+            line-height: 1.4;
+            font-weight: 400;
+        }
+
+        .botao-capta-whats {
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+            background-color: #25D366;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            padding: 20px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+        }
+
+
+        .botao-capta-whats:hover {
+            background-color: #1ebe5d;
+        }
+
+        .botao-capta-whats img {
+            display: block;
+        }
+
+        .img-localizacao {
+            justify-content: center;
+            display: flex;
+            border-radius: 30px;
+            padding: 20px;
+        }
+
+        .img-localizacao img {
+            border-radius: 30px;
+        }
+
+        .fale-consultor {
+            color: white;
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .imagem-construtor img {
+            width: 320px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .capta-zap {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .imagem-construtor img {
+                width: 100%;
+            }
+        }
+
+        .scroller-equipamentos {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+            max-width: 100%;
+            background-color: #004d8e;
+            padding: 2rem 1rem;
+            position: relative;
+        }
+
+        .mais-alugados {
+            color: #ffc72c;
+            font-size: 2rem;
+            background-color: #004d8e;
+            text-align: center;
+            margin-bottom: -1px;
+            padding: 10px;
+        }
+
+        .scroller-equipamentos__inner {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: nowrap;
+            width: max-content;
+            animation: scroll-equipamentos var(--_scroll-duration, 40s) linear infinite;
+        }
+
+        .scroller-equipamentos[data-speed="slow"] {
+            --_scroll-duration: 60s;
+        }
+
+        .scroller-equipamentos[data-speed="fast"] {
+            --_scroll-duration: 20s;
+        }
+
+        .equipamento {
+            flex: 0 0 auto;
+            scroll-snap-align: start;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 250px;
+        }
+
+        .equipamento h2 {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #004d8e;
+            padding: 10px 0;
+        }
+
+        .equipamento img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @keyframes scroll-equipamentos {
+            to {
+                transform: translateX(calc(-50% - 1rem));
+            }
+        }
+
+
+        @media (max-width: 768px) {
+            .equipamentos>div {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+
+        .whatsapp-fixo {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: #25D366;
+            border-radius: 50%;
+            padding: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-fixo:hover {
+            transform: scale(1.1);
+        }
+
+        .footer {
+            background-color: #004d8e;
+            color: white;
+            text-align: center;
+            padding: 20px 10px;
+            position: relative;
+            margin-top: 40px;
+        }
+
+        .footer-content p {
+            margin: 5px 0;
+            font-size: 0.9rem;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: #25D366;
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <div class="logo-box">
+                <img fetchpriority="high" decoding="async" width="80" height="80" src="img/logo.png"
+                    class="attachment-large size-large wp-image-29" alt="Logo Casa do Construtor">
+            </div>
+        </div>
+
+        <div class="contact-container">
+            <!-- <img src="img/zap bco.png" alt="Ícone Telefone" width="16" height="16" /> -->
+            <a href="https://wa.me/558540426868" class="btn-localizacao"> Contato</a>
+            <a href="#localizacao" class="btn-localizacao">Localização</a>
+        </div>
+    </header>
+
+
+    <div class="primeira-imagem">
+        <img src="img/outdoor 01 - 70 equipamentos.jpg" alt="Outdoor com 70 equipamentos">
+    </div>
+
+    <div class="capta-zap">
+        <div class="container-capta-zap">
+            <div class="logo">
+                <div class="logo-lateral">
+                    <img fetchpriority="high" decoding="async" width="100" height="100"
+                        src="img/mascote3d_caostrulino_pose02_dando_a_pata_tamanho_pequeno.png" />
+                </div>
+                <div class="logo-centro">
+                    <img fetchpriority="high" decoding="async" width="100" height="100" src="img/logo.png" />
+                </div>
+                <div class="logo-lateral">
+                    <img fetchpriority="high" decoding="async" width="100" height="100"
+                        src="img/mascote3d_casa_do_construtor_pose16_meme_sim_tamanho_pequeno.png" />
+                </div>
+            </div>
+            <div class="frase-impacto">
+                <h2>Alugar um equipamento <br> nunca foi tão fácil!</h2>
+            </div>
+            <div class="descricao-impacto">
+                <h2>Temos mais de 70 tipos de equipamentos! <br>
+                    Clique no botão abaixo e confira agora!
+                </h2>
+            </div>
+            <div class="botao-capta-whats" onclick="window.open('https://wa.me/558540426868', '_blank')">
+                <img src="img/zap bco.png" alt="WhatsApp" width="36" height="50" />
+                <span>Fale com um Consultor</span>
+            </div>
+        </div>
+
+        <div class="imagem-construtor">
+            <img src="img/imagem-construtor.png" alt="Imagem Construtor" />
+        </div>
+    </div>
+
+    <h2 class="mais-alugados">Equipamentos Mais Alugados</h2>
+    <div class="scroller-equipamentos" data-speed="fast">
+        <div class="scroller-equipamentos__inner">
+            <div class="equipamento">
+                <h2>Acesso e Elevação</h2>
+                <img src="img/Acesso_elevacao.png" width="480" height="320">
+            </div>
+            <div class="equipamento">
+                <h2>Andaimes</h2>
+                <img src="img/andaimes.png" width="480" height="320">
+            </div>
+            <div class="equipamento">
+                <h2>Compactação</h2>
+                <img src="img/compactacao.png" width="480" height="320">
+            </div>
+            <div class="equipamento">
+                <h2>Concretagem</h2>
+                <img src="img/concretagem.png" width="480" height="320">
+            </div>
+            <div class="equipamento">
+                <h2>Ferramentas Elétricas</h2>
+                <img src="img/ferramentas_eletricas.png" width="480" height="320">
+            </div>
+            <div class="equipamento">
+                <h2>Furação e Demoliçao</h2>
+                <img src="img/furacao_demolicao.png" width="480" height="320">
+            </div>
+            <div class="equipamento">
+                <h2>Jardinagem</h2>
+                <img src="img/jardinagem.png" width="480" height="320">
+            </div>
+            <div class="equipamento">
+                <h2>Limpeza</h2>
+                <img src="img/limpeza.png" width="480" height="320">
+            </div>
+            <div class="equipamento">
+                <h2>Motores</h2>
+                <img src="img/motores.png" width="480" height="320">
+            </div>
+            <div class="equipamento">
+                <h2>Outros</h2>
+                <img src="img/outros.png" width="480" height="320">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const scroller = document.querySelector('.scroller-equipamentos');
+
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            const inner = scroller.querySelector('.scroller-equipamentos__inner');
+            const items = Array.from(inner.children);
+
+            scroller.setAttribute('data-animated', 'true');
+
+            items.forEach(item => {
+                const clone = item.cloneNode(true);
+                clone.setAttribute('aria-hidden', 'true');
+                inner.appendChild(clone);
+            });
+        }
+    </script>
+
+    <div class="onde-estamos" id="localizacao">
+        <h2>Onde Estamos!</h2>
+        <div class="img-localizacao">
+            <img loading="lazy" decoding="async" width="480" height="320" src="img/img_pacatuba.jpg" />
+        </div>
+        <div class="municipio">
+            <h2>Pacatuba - CE</h2>
+        </div>
+        <div class="endereco">
+            <h2>Av. Doutor Mendel Steinbruch, Nº 4393 - Pavuna</h2>
+        </div>
+    </div>
+
+    <a href="https://wa.me/558540426868" class="whatsapp-fixo" target="_blank" aria-label="Fale conosco no WhatsApp">
+        <img src="img/zap bco.png" alt="WhatsApp" width="40" height="40" />
+    </a>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Casa do Construtor - Todos os direitos reservados.</p>
+            <p>Pacatuba - CE</p>
+        </div>
+    </footer>
+</body>
+
+</html>
